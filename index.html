@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <title>Questionnaire Form</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <div class="form-container contanier-fluid">
+    <div class="form">
+      <h2>Carefully fill out all required info and select options as applicable. The checkboxes allow for multiple
+        selections</h2>
+
+      <form id="formdata" class="needs-validation" novalidate role="form">
+        <div class="form-row">
+          <ol>
+            <li>
+              <div class="form-group">
+                <p class="question">Which of the following best describes you?</p>
+
+                <div class="form-check">
+                  <input type="radio" name='gender' id="male" value="male" class="form-check-input" required>
+                  <label for="male" class="form-check-label">Male
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" name='gender' id="female" value="female" class="form-check-input">
+                  <label for="female" class="form-check-label">Female
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" name='gender' id="non-binary" value="non-binary" class="form-check-input">
+                  <label for="non-binary" class="form-check-label">Non-binary
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" name='gender' id="unspecified" value="unspecified" class="form-check-input">
+                  <label for="unspecified" class="form-check-label">Prefer not to say
+                  </label>
+                  <div class="invalid-feedback">
+                    Please select an option.
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="form-group">
+                <label for="dropdown" class="question">Please select the age category within which you fit</label>
+                <select name="age" id="dropdown" class="form-select select" required>
+                  <option hidden selected value="">Select age range</option>
+                  <option value="above 50">Above 50</option>
+                  <option value="40-49">40-49</option>
+                  <option value="30-39">30-39</option>
+                  <option value="below 30">Below 30</option>
+
+                </select>
+                <div class="invalid-feedback">
+                  Please select age
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="form-group">
+                <p class="question">Which of these social media platforms do you utilize? <span
+                    style="font-size: .8em">(select all
+                    applicable)</span></p>
+                <div class="form-check">
+                  <input type="checkbox" id="facebook" name="social_media" value="facebook" class="form-check-input"
+                    onchange="validateCheckbox()">
+                  <label for="facebook" class="form-check-label">Facebook</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" id="twitter" name="social_media" value="twitter" class="form-check-input"
+                    onchange="validateCheckbox()">
+                  <label for="twitter" class="form-check-label">Twitter</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" id="instagram" name="social_media" value="instagram" class="form-check-input"
+                    onchange="validateCheckbox()">
+                  <label for="instagram" class="form-check-label">Instagram</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" id="pinterest" name="social_media" value="pinterest" class="form-check-input"
+                    onchange="validateCheckbox()">
+                  <label for="pinterest" class="form-check-label">Pinterest</label>
+
+                  <div class="invalid-feedback">Please check at least one box</div>
+
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="form-group">
+
+                <p class="question">We would like to appreciate you for taking time to answer these questions.
+                  Kindly enter your email address below to receive your reward link
+                <p>
+                  <input class="form-control email" name="email" type="email" placeholder="Enter your email" id="email"
+                    required>
+                <div class="invalid-feedback">
+                  Please enter your email.
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="actions">
+          <input class="btn btn-custom" type="reset" value="Reset">
+          <button type="submit" class="btn btn-custom2">Submit </button>
+        </div>
+      </form>
+      <footer>Coded by Emmanuel for HASOB internship assessment</footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img src="./images/undraw_welcome_3gvl.png" alt="" height="120px">
+            <h2 class="modal-title" id="exampleModalLongTitle">Welcome</h2>
+
+          </div>
+          <div class="modal-body">
+
+
+            <p>Thank you for your interest in this quick survey. Do note that all data collected during this survey
+              are solely aimed at research purposes alone. Kindly click on the button below or anywhere outside of this
+              box to get started.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-custom3" data-dismiss="modal">Get Started</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div id="code">
+      <p>Thank you, your answers have been submitted successfully!!!</p>
+      <pre>
+       <code-block class="data-display"></code-block>
+      </pre>
+      <a href="./index.html">Back</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js">
+    </script>
+
+    <script src="script.js"></script>
+</body>
